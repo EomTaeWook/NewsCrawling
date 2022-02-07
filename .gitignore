@@ -1,0 +1,9 @@
+NewsCrawling/obj/
+NewsCrawling/packages/
+packages/
+TemplateContainers/bin/
+TemplateContainers/obj/
+.vs/NewsCrawling/v16/.suo
+NewsCrawling/mailConfig_debug.json
+NewsCrawling/bin/
+*.user

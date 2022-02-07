@@ -1,0 +1,35 @@
+[
+  {
+    "Id": 1000,
+    "Name": "Naver",
+    "Url": "https://news.naver.com/main/list.naver?mode=LS2D&sid2=731&sid1=105&mid=shm&page={0}",
+    "ATagGroup": {
+      "ATag": "(?<=<dt>(?:[\\s]+(?=<a)))([\\s\\S]+?(?:\\s+))(<\\/a>)",
+      "Href": "(?<=href=)([\"'])(.*?)\\1",
+      "Title": "(?<=[\"']>)[\\s\\S]+?(?=<\\/a>)"
+    },
+    "NewsContentRegex": "(?<=<div(.*)class=(.*)article_body_contents[^>]>)[\\s\\S]+?(?=</div>)"
+  },
+  {
+    "Id": 1001,
+    "Name": "Daum",
+    "Url": "https://news.daum.net/breakingnews/digital/science?page={0}",
+    "ATagGroup": {
+      "ATag": "((?<=<strong\\s+class=\"tit_thumb\">(?:[\\s]+))<a)[\\s\\S]+?<\\/a>",
+      "Href": "(?<=href=)([\"'])(.*?)\\1",
+      "Title": "(?<=[\"']>)[\\s\\S]+?(?=<\\/a>)"
+    },
+    "NewsContentRegex": "(?<=<div(.*)class=\"article_view\"[^>]+>)[\\s\\S]+?(?=<div(.*) class=\"foot_view\"[^>]+>)"
+  },
+  {
+    "Id": 1002,
+    "Name": "Nate",
+    "Url": "https://news.nate.com/subsection?cate=its99&mid=n0607&type=c&page={0}",
+    "ATagGroup": {
+      "ATag": "(?<=<div class=\"mlt01\">(?:[\\s]+))<a[\\s\\S]+?(<\\/a>)",
+      "Href": "(?<=href=)([\"'])(.*?)\\1",
+      "Title": "((?<=<strong class=\"tit\">)[\\s\\S]+?(?=<\\/strong>)|(?<=<\\/strong>(?:[\\s]+?)(?:\\s+))([\\s\\S]+?)(?=<\\/span>))"
+    },
+    "NewsContentRegex": "(?<=<\\/table>)[\\s\\S]+?(?=<div(.*)class=\"md-emotion-view\"[^>]+>)"
+  }
+]

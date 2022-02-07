@@ -1,0 +1,9 @@
+{
+  "SmtpHost": "smtp.gmail.com",
+  "SmtpPort": 587,
+  "SmtpSender": "",
+  "SmtpReceiver": [],
+  "MailTitle": "IT News",
+  "MailUserId": "",
+  "MailUserPassword": ""
+}
