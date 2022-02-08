@@ -90,6 +90,10 @@ namespace NewsCrawling.Manager
                 newsData.SetUrl(herf);
 
                 var title = ProcessRegex(newsTemplate.ATagGroup.Title, aTagData);
+
+                title = title.Replace("&#039;", "'");
+                title = title.Replace("&#034;", "\"");
+
                 newsData.SetTitle(title);
                 if (string.IsNullOrEmpty(newsData.Url) == true)
                 {

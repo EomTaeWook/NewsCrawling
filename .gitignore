@@ -7,3 +7,5 @@ TemplateContainers/obj/
 NewsCrawling/mailConfig_debug.json
 NewsCrawling/bin/
 *.user
+.vs/NewsCrawling/config/applicationhost.config
+.vs/NewsCrawling/DesignTimeBuild/.dtbcache.v2

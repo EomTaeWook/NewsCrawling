@@ -18,8 +18,7 @@ namespace NewsCrawling.Model
         }
         public void SetTitle(string title)
         {
-            this.Title = title.Replace("&#039;", "'");
-            this.Title = this.Title.Replace("&#034;", "\"");
+            this.Title = title.Trim();
         }
         public void SetUrl(string url)
         {
