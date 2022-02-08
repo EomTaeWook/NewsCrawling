@@ -21,5 +21,7 @@ namespace NewsCrawling.Template
         public CATagGroup ATagGroup { get; set; }
 
         public string NewsContentRegex { get; set; }
+
+        public string Suffix { get; set; }
     }
 }

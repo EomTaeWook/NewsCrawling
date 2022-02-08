@@ -52,7 +52,7 @@ namespace NewsCrawling.Manager
                     {
                         DataManager.Instance.AddData(template, result);
                     }
-
+                    Console.WriteLine();
                     await Task.Delay(requestDelayMilliseconds);
                 }
             }
@@ -72,10 +72,25 @@ namespace NewsCrawling.Manager
                 var newsData = new NewsData();
 
                 var herf = ProcessRegex(newsTemplate.ATagGroup.Href, aTagData);
+                herf = herf.Trim();
+                if (herf.StartsWith("\"") == true)
+                {
+                    herf = herf.Remove(0, 1);
+                }
+                if (herf.EndsWith("\"") == true)
+                {
+                    herf = herf.Remove(herf.Length - 1, 1);
+                }
+
+                if (herf.StartsWith(newsTemplate.Suffix) == false)
+                {
+                    herf = $"{newsTemplate.Suffix}{herf}";
+                }
+
                 newsData.SetUrl(herf);
 
                 var title = ProcessRegex(newsTemplate.ATagGroup.Title, aTagData);
-                newsData.Title = title;
+                newsData.SetTitle(title);
                 if (string.IsNullOrEmpty(newsData.Url) == true)
                 {
                     continue;
@@ -87,7 +102,8 @@ namespace NewsCrawling.Manager
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         body = await response.Content.ReadAsStringAsync();
-                        newsData.Content = ProcessRegex(newsTemplate.NewsContentRegex, body);
+                        var content = ProcessRegex(newsTemplate.NewsContentRegex, body);
+                        newsData.SetContent(content);
                     }
                 }
                 catch(Exception ex)
@@ -97,8 +113,12 @@ namespace NewsCrawling.Manager
 
                 if(IsContainKeywords(newsData.Title) || IsContainKeywords(newsData.Content) == true)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"{newsTemplate.Name} - {newsData.Title} 추가");
                     list.Add(newsData);
                 }
+
+                await Task.Delay(200);
             }
 
             return list;

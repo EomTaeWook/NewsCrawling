@@ -8,7 +8,8 @@
       "Href": "(?<=href=)([\"'])(.*?)\\1",
       "Title": "(?<=[\"']>)[\\s\\S]+?(?=<\\/a>)"
     },
-    "NewsContentRegex": "(?<=<div(.*)class=(.*)article_body_contents[^>]>)[\\s\\S]+?(?=</div>)"
+    "NewsContentRegex": "(?<=<div(.*)class=(.*)article_body_contents[^>]>)[\\s\\S]+?(?=</div>)",
+    "Suffix": "https://"
   },
   {
     "Id": 1001,
@@ -19,7 +20,8 @@
       "Href": "(?<=href=)([\"'])(.*?)\\1",
       "Title": "(?<=[\"']>)[\\s\\S]+?(?=<\\/a>)"
     },
-    "NewsContentRegex": "(?<=<div(.*)class=\"article_view\"[^>]+>)[\\s\\S]+?(?=<div(.*) class=\"foot_view\"[^>]+>)"
+    "NewsContentRegex": "(?<=<div(.*)class=\"article_view\"[^>]+>)[\\s\\S]+?(?=<div(.*) class=\"foot_view\"[^>]+>)",
+    "Suffix": "https://"
   },
   {
     "Id": 1002,
@@ -27,9 +29,10 @@
     "Url": "https://news.nate.com/subsection?cate=its99&mid=n0607&type=c&page={0}",
     "ATagGroup": {
       "ATag": "(?<=<div class=\"mlt01\">(?:[\\s]+))<a[\\s\\S]+?(<\\/a>)",
-      "Href": "(?<=href=)([\"'])(.*?)\\1",
+      "Href": "(?<=<a href=\"(?:[\\/]{2}))([\\s\\S]+)(?=(?:[\\s\\S]) class=\"lt1\">)",
       "Title": "((?<=<strong class=\"tit\">)[\\s\\S]+?(?=<\\/strong>)|(?<=<\\/strong>(?:[\\s]+?)(?:\\s+))([\\s\\S]+?)(?=<\\/span>))"
     },
-    "NewsContentRegex": "(?<=<\\/table>)[\\s\\S]+?(?=<div(.*)class=\"md-emotion-view\"[^>]+>)"
+    "NewsContentRegex": "(?<=<\\/table>)[\\s\\S]+?(?=<div(.*)class=\"md-emotion-view\"[^>]+>)",
+    "Suffix": "https://"
   }
 ]

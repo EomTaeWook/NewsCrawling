@@ -8,9 +8,19 @@ namespace NewsCrawling.Model
     {
         public string Url { get; set; }
 
-        public string Title { get; set; }
+        public string Title { get; private set; }
 
-        public string Content { get; set; }
+        public string Content { get; private set; }
+
+        public void SetContent(string content)
+        {
+            this.Content = content.Replace("&#039;", "'");
+        }
+        public void SetTitle(string title)
+        {
+            this.Title = title.Replace("&#039;", "'");
+            this.Title = this.Title.Replace("&#034;", "\"");
+        }
         public void SetUrl(string url)
         {
             url = url.Trim();
@@ -22,6 +32,7 @@ namespace NewsCrawling.Model
             {
                 url = url.Remove(url.Length - 1, 1);
             }
+
             this.Url = url;
         }
     }
