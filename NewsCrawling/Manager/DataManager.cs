@@ -80,6 +80,12 @@ namespace NewsCrawling.Manager
         }
         public async Task SendDataByEmailAsync()
         {
+            if(this.mailConfig.SmtpReceiver.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"수신자 입력이 되지 않았습니다.");
+                return;
+            }
             MailMessage mailMessage = new MailMessage(this.mailConfig.SmtpSender, this.mailConfig.SmtpReceiver[0], this.mailConfig.MailTitle, CreateData());
             for(int i=1; i< this.mailConfig.SmtpReceiver.Count; ++i)
             {
@@ -89,8 +95,20 @@ namespace NewsCrawling.Manager
             mailMessage.BodyEncoding = Encoding.UTF8;
             SmtpClient smtp = new SmtpClient($"{this.mailConfig.SmtpHost}", this.mailConfig.SmtpPort);
             smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = false;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Credentials = new System.Net.NetworkCredential(this.mailConfig.MailUserId, this.mailConfig.MailUserPassword);
-            await smtp.SendMailAsync(mailMessage);
+            try
+            {
+                await smtp.SendMailAsync(mailMessage);
+            }
+            catch(Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"메일 보내기에 실패하였습니다.");
+                Console.WriteLine($"{ex.Message}");
+            }
+            
         }
     }
 }

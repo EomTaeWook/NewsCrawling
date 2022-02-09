@@ -95,6 +95,10 @@ namespace NewsCrawling.Manager
                 title = title.Replace("&#034;", "\"");
 
                 newsData.SetTitle(title);
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"{newsTemplate.Name} - {newsData.Title} 파싱 완료");
+
                 if (string.IsNullOrEmpty(newsData.Url) == true)
                 {
                     continue;
@@ -112,7 +116,10 @@ namespace NewsCrawling.Manager
                 }
                 catch(Exception ex)
                 {
-                    throw ex;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Url 주소가 잘못되었습니다.");
+                    Console.WriteLine($"{ex.Message}");
+                    break;
                 }
 
                 if(IsContainKeywords(newsData.Title) || IsContainKeywords(newsData.Content) == true)

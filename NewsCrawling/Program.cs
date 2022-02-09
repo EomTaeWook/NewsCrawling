@@ -36,6 +36,10 @@ namespace NewsCrawling
                 Console.WriteLine($"{ex.Message}");
                 Console.ReadLine();
             }
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"작업이 완료되었습니다.");
+
         }
         private static void InitTemplate(Config confingModel)
         {
