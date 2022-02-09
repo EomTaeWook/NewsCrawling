@@ -42,4 +42,8 @@
     </None>
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy /S/Y &quot;$(SolutionDir)Datas\*.json&quot; &quot;$(TargetDir)Datas\&quot;&#xD;&#xA;&#xD;&#xA;IF $(ConfigurationName) == Release (&#xD;&#xA;del /S/Q $(TargetDir)mailConfig_debug.json&#xD;&#xA;)" />
+  </Target>
+
 </Project>
