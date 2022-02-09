@@ -1,5 +1,5 @@
 {
-  "JsonPath": "../../Datas/",
+  "JsonPath": "./Datas/",
   "RequestDelayMilliseconds": "2000",
   "KeyWords": [
     ""
