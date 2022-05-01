@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TemplateContainers;
+﻿using TemplateContainers;
 
 namespace NewsCrawling.Template
 {

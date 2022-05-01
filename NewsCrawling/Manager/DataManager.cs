@@ -108,6 +108,10 @@ namespace NewsCrawling.Manager
                 Console.WriteLine($"메일 보내기에 실패하였습니다.");
                 Console.WriteLine($"{ex.Message}");
             }
+            finally
+            {
+                smtp.Dispose();
+            }
             
         }
     }
